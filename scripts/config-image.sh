@@ -110,7 +110,12 @@ if [[ $(type -t config_image_hook__"${BOARD}") == function ]]; then
 fi 
 
 # Download and install U-Boot
-chroot ${chroot_dir} apt-get -y install "u-boot-${BOARD}"
+if [ "$BOARD" == "rock-5c" ]; then
+    chroot $chroot_dir apt-get -y install "u-boot-rock-5a"
+else
+    echo "BOARD is not rock-5c. No action taken."
+    chroot $chroot_dir apt-get -y install "u-boot-$BOARD"
+fi
 
 # Update the initramfs
 chroot ${chroot_dir} update-initramfs -u
