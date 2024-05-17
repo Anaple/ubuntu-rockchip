@@ -1,6 +1,6 @@
 # shellcheck shell=bash
 
-export BOARD_NAME="ROCK 5A"
+export BOARD_NAME="ROCK 5C"
 export BOARD_MAKER="Radxa"
 export UBOOT_PACKAGE="u-boot-radxa-rk3588"
 export UBOOT_RULES_TARGET="rock-5c-rk3588s"
