@@ -1,4 +1,4 @@
-name: Build
+name: Build-Kernel-uboot
 
 on:
   workflow_dispatch:
@@ -97,7 +97,7 @@ jobs:
         run: sudo ./build.sh --board=rock-5c --release=${{ matrix.release }} --project=${{ matrix.project }} --kernel-only
       - name: Rename
         shell: bash
-        run: sudo mv mv linux-image* linux-image-${{ matrix.release }}-${{ matrix.project }}.deb && sudo mv  linux-headers* linux-headers-${{ matrix.release }}-${{ matrix.project }}.deb
+        run: sudo mv  ./build/linux-image* ./build/linux-image-${{ matrix.release }}-${{ matrix.project }}.deb && sudo mv  ./build/linux-headers* ./build/linux-headers-${{ matrix.release }}-${{ matrix.project }}.deb
       - name: Upload1
         uses: actions/upload-artifact@v4.3.1
         with:
@@ -155,7 +155,7 @@ jobs:
         run: sudo ./build.sh --board=${{ matrix.board }} --release=${{ matrix.release }} --project=${{ matrix.project }} --uboot-only
       - name: Rename
         shell: bash
-        run: sudo mv u-boot-${{ matrix.board }}* u-boot-${{ matrix.board }}_${{ matrix.project }}_${{ matrix.release }}.deb
+        run: sudo mv ./build/u-boot-${{ matrix.board }}* ./build/u-boot-${{ matrix.board }}_${{ matrix.project }}_${{ matrix.release }}.deb
       - name: Upload
         uses: actions/upload-artifact@v4.3.1
         with:
