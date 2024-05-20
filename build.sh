@@ -76,7 +76,7 @@ while [ "$#" -gt 0 ]; do
             shift 2
             ;;
         -d|--docker)
-            DOCKER="docker run --privileged --network=host --rm -it -v \"$(pwd)\":/opt -e BOARD -e VENDOR -e LAUNCHPAD -e MAINLINE -e SERVER_ONLY -e DESKTOP_ONLY -e KERNEL_ONLY -e UBOOT_ONLY ubuntu-rockchip-build /bin/bash"
+            DOCKER="docker run --privileged --network=host --rm -it -v \"$(pwd)\":/opt -e BOARD -e VENDOR -e LAUNCHPAD -e MAINLINE -e SERVER_ONLY -e DESKTOP_ONLY -e KERNEL_ONLY -e UBOOT_ONLY -e RELEASE -e PROJECT  ubuntu-rockchip-build /bin/bash"
             docker build -t ubuntu-rockchip-build docker
             shift
             ;;

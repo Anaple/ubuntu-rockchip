@@ -111,13 +111,7 @@ fi
 
 # Download and install U-Boot
 if [ "$BOARD" == "rock-5c" ]; then
-    sudo mkdir -p ${chroot_dir}/tmp
-    sudo cp u-boot* ${chroot_dir}/tmp
-    sudo cp linux-image* ${chroot_dir}/tmp
-    sudo cp linux-headers* ${chroot_dir}/tmp
-    chroot $chroot_dir dpkg -i /tmp/linux-image*
-    chroot $chroot_dir dpkg -i /tmp/u-boot*
-    chroot $chroot_dir dpkg -i /tmp/linux-headers*
+    echo "BOARD is  rock-5c."
 else
     echo "BOARD is not rock-5c. No action taken."
     chroot $chroot_dir apt-get -y install "u-boot-$BOARD"
